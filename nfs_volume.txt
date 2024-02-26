@@ -1,0 +1,26 @@
+kind: Deployment
+metadata:
+   name: mydeployment
+spec:
+   replicas: 5
+   selector:
+     matchLabels:
+       app: web
+   template:
+      metadata:
+         labels:
+            app: web
+      spec:
+         containers:
+             - name: nginxcontainer
+               image: nginx
+               ports:
+                 - containerPort: 80
+               volumeMounts:
+                   - name: html
+                     mountPath: /usr/share/nginx/html
+         volumes:
+          - name: html
+            nfs:
+               path: /mynfsfolder
+               server: fs-09630e6e43d0a1a65.efs.us-east-1.amazonaws.com
