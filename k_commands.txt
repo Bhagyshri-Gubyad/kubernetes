@@ -1,0 +1,45 @@
+
+
+kubectl apply -f nginxpod.yml
+ kubectl get pods
+kubectl describe pod mynginxpod
+kubectl exec -it mynginxpod -- /bin/bash
+kubectl delete pod mynginxpod
+
+kubectl get pods --show-labels
+
+ kubectl get pods -l app=web
+ kubectl get pods -l env
+kubectl get pods -l env=test
+kubectl get pods -l env=prod
+ kubectl get pod -l app
+kubectl get pod -l app=we
+kubectl get pod -l app=web
+
+ kubectl get nodes -o wide
+ kubectl get pods -o wide
+
+kubectl get pods -n kube-system
+kubectl get pods --namespace kube-system
+
+kubectl delete pod --all
+
+kubectl config set-context --current --namespace=customspace
+
+kubectl get replicationcontroller
+kubectl scale rc myreplica --replicas=6
+
+kubectl rollout history deployment myreplica
+
+kubectl annotate deployment myreplica kubernetes.io/change-cause="v2"
+
+kubectl get deployment myreplica -o yaml
+
+kubectl set image deployment mydeployment nginxcontainer=httpd
+
+sudo sync; echo 3 > /proc/sys/vm/drop_caches = to clear ram 
+
+
+kubectl create configmap nginxconfigmap --from-file default.conf
+kubectl get configmap
+ kubectl describe configmap nginxconfigmap
